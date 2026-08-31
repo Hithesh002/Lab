@@ -1,0 +1,5 @@
+plain = input("Enter Text: ")
+single = plain[::-1]
+print("Single Transposition:", single)
+double = single[::-1]
+print("Double Transposition:", double)

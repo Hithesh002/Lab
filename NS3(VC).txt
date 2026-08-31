@@ -1,0 +1,29 @@
+def generateKey(text, key):
+ key = list(key)
+ if len(text) == len(key):
+ return("".join(key))
+ else:
+ for i in range(len(text) - len(key)):
+ key.append(key[i % len(key)])
+ return("".join(key))
+def encrypt(text, key):
+ cipher = []
+ for i in range(len(text)):
+ x = (ord(text[i]) + ord(key[i])) % 26
+ x += 65
+ cipher.append(chr(x))
+ return("".join(cipher))
+def decrypt(cipher, key):
+ plain = []
+ for i in range(len(cipher)):
+ x = (ord(cipher[i]) - ord(key[i]) + 26) % 26
+ x += 65
+ plain.append(chr(x))
+ return("".join(plain))
+text = input("Enter Text: ").upper()
+key = input("Enter Key: ").upper()
+key = generateKey(text, key)
+cipher = encrypt(text, key)
+print("Encrypted:", cipher)
+plain = decrypt(cipher, key)
+print("Decrypted:", plain)

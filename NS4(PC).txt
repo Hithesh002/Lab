@@ -1,0 +1,12 @@
+def encrypt(text):
+ text = text.upper().replace(" ", "")
+ if len(text) % 2 != 0:
+ text += "X"
+ cipher = ""
+ for i in range(0, len(text), 2):
+ cipher += chr((ord(text[i]) - 65 + 3) % 26 + 65)
+ cipher += chr((ord(text[i+1]) - 65 + 3) % 26 + 65)
+ return cipher
+plain = input("Enter Message: ")
+cipher = encrypt(plain)
+print("Encrypted:", cipher)

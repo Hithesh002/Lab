@@ -1,0 +1,11 @@
+import numpy as np
+text = input("Enter Text (4 letters): ").upper()
+if len(text) % 2 != 0:
+ text += "X"
+cipher = ""
+for i in range(0, len(text), 2):
+ pair = np.array([[ord(text[i]) - 65], [ord(text[i+1]) - 65]])
+ result = np.dot(key, pair) % 26
+ cipher += chr(result[0][0] + 65)
+ cipher += chr(result[1][0] + 65)
+print("Encrypted:", cipher)
